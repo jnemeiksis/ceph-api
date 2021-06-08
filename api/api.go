@@ -101,7 +101,7 @@ func GetUserQuotasJSON(endpoint string, user string) string {
 }
 
 // GetUserBuckets return bucket quotas
-func GetUserQuotasJSON(endpoint string, user string) string {
+func GetBucketQuotasJSON(endpoint string, user string) string {
 	url := endpoint + "/admin/user?quota&quota-type=bucket&uid=" + user
 	bquotas := adminAPI(url)
 	return bquotas
