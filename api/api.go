@@ -17,8 +17,7 @@ type Buckets []string
 // Bucketstats - bucket stats json structure
 type Bucketstats struct {
 	Bucket    string `json:"bucket"`
-	Pool      string `json:"pool"`
-	IndexPool string `json:"index_pool"`
+	NumShards int64 `json:"num_shards"`
 	ID        string `json:"id"`
 	Marker    string `json:"marker"`
 	Owner     string `json:"owner"`
@@ -77,6 +76,13 @@ func GetBucketStatsJSON(endpoint string, bucket string) string {
 	url := endpoint + "/admin/bucket?bucket=" + bucket
 	bstats := adminAPI(url)
 	return bstats
+}
+
+// GetUserStatsJSON return user stats in json
+func GetUserStatsJSON(endpoint string, user string) string {
+	url := endpoint + "/admin/user?user=" + user
+	bstats := adminAPI(url)
+	return ustats
 }
 
 // ListUsers list all the users in a zonegroup
