@@ -97,7 +97,7 @@ func GetBucketStatsJSON(endpoint string, bucket string) string {
 
 // GetUserStatsJSON return user stats in json
 func GetUserStatsJSON(endpoint string, user string) string {
-	url := endpoint + "/admin/user?uid=" + user  + "&format=json&stats=False"
+	url := endpoint + "/admin/user?uid=" + user  + "&format=json&stats=True"
 	ustats := adminAPI(url)
 	return ustats
 }
