@@ -48,6 +48,15 @@ type Bucketstats struct {
 	} `json:"bucket_quota"`
 }
 
+// Userstats - user stats json structure
+type Userstats struct {
+	Stats      struct {
+		SizeKb       int64 `json:"size_kb"`
+		SizeKbActual int64 `json:"size_kb_actual"`
+		NumObjects   int64 `json:"num_objects"`
+	} `json:"stats"`
+}
+
 // ListBuckets returns buckets list array
 func ListBuckets(endpoint string) Buckets {
 	var b Buckets
@@ -62,6 +71,14 @@ func GetBucketStats(endpoint string, bucket string) Bucketstats {
 	bsjson := GetBucketStatsJSON(endpoint, bucket)
 	json.Unmarshal([]byte(bsjson), &bs)
 	return bs
+}
+
+// GetUserStats return bucket stats
+func GetUserStats(endpoint string, user string) Userstats {
+	var us Userstats
+	usjson := GetUserStatsJSON(endpoint, user)
+	json.Unmarshal([]byte(usjson), &us)
+	return us
 }
 
 // ListBucketsJSON list all the buckets in a zonegroup
@@ -81,15 +98,17 @@ func GetBucketStatsJSON(endpoint string, bucket string) string {
 // GetUserStatsJSON return user stats in json
 func GetUserStatsJSON(endpoint string, user string) string {
 	url := endpoint + "/admin/user?user=" + user
-	bstats := adminAPI(url)
+	ustats := adminAPI(url)
 	return ustats
 }
 
 // ListUsers list all the users in a zonegroup
 func ListUsers(endpoint string) string {
 	url := endpoint + "/admin/metadata/user"
-	buckets := adminAPI(url)
-	return buckets
+	users := adminAPI(url)
+	return users
+//	buckets := adminAPI(url)
+//	return buckets
 }
 
 // GetUserBuckets return bucket stats
