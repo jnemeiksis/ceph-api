@@ -97,7 +97,7 @@ func GetBucketStatsJSON(endpoint string, bucket string) string {
 
 // GetUserStatsJSON return user stats in json
 func GetUserStatsJSON(endpoint string, user string) string {
-	url := endpoint + "/admin/user?uid=" + user
+	url := endpoint + "/admin/user?uid=" + user  + "&format=json&stats=False"
 	ustats := adminAPI(url)
 	return ustats
 }
@@ -107,16 +107,7 @@ func ListUsers(endpoint string) string {
 	url := endpoint + "/admin/metadata/user"
 	users := adminAPI(url)
 	return users
-//	buckets := adminAPI(url)
-//	return buckets
 }
-
-// GetUserBuckets return bucket stats
-//func GetUserBuckets(endpoint string, user string) string {
-//	url := endpoint + "/admin/bucket?uid=" + user
-//	ubuckets := adminAPI(url)
-//	return ubuckets
-//}
 
 // GetUserQuotasJSON return user quotas
 func GetUserQuotasJSON(endpoint string, user string) string {
