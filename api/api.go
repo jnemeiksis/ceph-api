@@ -50,7 +50,7 @@ type Bucketstats struct {
 
 // Userstats - user stats json structure
 type Userstats struct {
-	Stats      struct {
+	Stats struct {
 		SizeKb       int64 `json:"size_kb"`
 		SizeKbActual int64 `json:"size_kb_actual"`
 		NumObjects   int64 `json:"num_objects"`
