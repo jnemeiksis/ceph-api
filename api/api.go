@@ -123,7 +123,7 @@ func GetBucketQuotasJSON(endpoint string, user string) string {
 	return bquotas
 }
 
-// adminApi calls specific admin api url
+// admin Api calls specific admin api url
 func adminAPI(url string) string {
 
 	const (
